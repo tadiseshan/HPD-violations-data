@@ -1,11 +1,10 @@
-import string
+import string, glob
 
-file = open('Violation20160331.txt', 'r')
+files = glob.glob('data/*.txt')
 
-file = file.read().replace('|', ',')
-
-test = open("newfile.csv", "w")
-test.write(file)
-test.close()
-
-print(test)
+for file in files:
+	f = open(file, 'r')
+	f = f.read().replace('|', ',')
+	n = open(file + ".csv", "w")
+	n.write(f)
+	n.close()
